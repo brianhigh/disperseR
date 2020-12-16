@@ -13,15 +13,16 @@
 #' @param path_met_files a full path should be provided
 #' for the location of the meteorological data files;
 #' downloaded files will be saved in this location.
+#' @param reanalysis_dir a url to the top-level folder containing the
+#' meteorology data files
 #' @import downloader
 
 
 #' @export get_met_reanalysis
 get_met_reanalysis <- function(files = NULL,
-  years = NULL,
-  path_met_files) {
-
-  reanalysis_dir <- "ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/"
+                               years = NULL,
+                               path_met_files,
+                               reanalysis_dir = "ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/") {
 
   # Download list of reanalysis met files by name
   if (!is.null(files)) {
@@ -31,9 +32,9 @@ get_met_reanalysis <- function(files = NULL,
       if (.Platform$OS.type == "windows") {
         download(
           url = paste0(reanalysis_dir,
-            files[i]),
+                       files[i]),
           destfile = file.path(path_met_files,
-            files[i]),
+                               files[i]),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
@@ -43,9 +44,9 @@ get_met_reanalysis <- function(files = NULL,
       if (.Platform$OS.type == "unix") {
         download.file(
           url = paste0(reanalysis_dir,
-            files[i]),
+                       files[i]),
           destfile = file.path(path_met_files,
-            files[i]),
+                               files[i]),
           method = "auto",
           quiet = FALSE,
           mode = "wb",
@@ -61,19 +62,19 @@ get_met_reanalysis <- function(files = NULL,
         if (.Platform$OS.type == "unix") {
           download.file(
             url = paste0(reanalysis_dir,
-              "RP",
-              years[i],
-              formatC(j, width = 2,
-                format = "d",
-                flag = "0"),
-              ".gbl"),
+                         "RP",
+                         years[i],
+                         formatC(j, width = 2,
+                                 format = "d",
+                                 flag = "0"),
+                         ".gbl"),
             destfile = file.path(path_met_files,
-              paste0( "RP",
-                years[i],
-                formatC(j, width = 2,
-                  format = "d",
-                  flag = "0"),
-                ".gbl")),
+                                 paste0( "RP",
+                                         years[i],
+                                         formatC(j, width = 2,
+                                                 format = "d",
+                                                 flag = "0"),
+                                         ".gbl")),
             method = "auto",
             quiet = FALSE,
             mode = "wb",
@@ -83,19 +84,19 @@ get_met_reanalysis <- function(files = NULL,
         if (.Platform$OS.type == "windows") {
           download.file(
             url = paste0(reanalysis_dir,
-              "RP",
-              years[i],
-              formatC(j, width = 2,
-                format = "d",
-                flag = "0"),
-              ".gbl"),
+                         "RP",
+                         years[i],
+                         formatC(j, width = 2,
+                                 format = "d",
+                                 flag = "0"),
+                         ".gbl"),
             destfile = file.path(path_met_files,
-              paste0( "RP",
-                years[i],
-                formatC(j, width = 2,
-                  format = "d",
-                  flag = "0"),
-                ".gbl")),
+                                 paste0( "RP",
+                                         years[i],
+                                         formatC(j, width = 2,
+                                                 format = "d",
+                                                 flag = "0"),
+                                         ".gbl")),
             method = "auto",
             quiet = FALSE,
             mode = "wb",

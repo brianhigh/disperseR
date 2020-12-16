@@ -5,7 +5,12 @@
 \title{This is a function from https://github.com/lhenneman/SplitR/blob/master/R/get_met_reanalysis.R
 Get reanalysis meteorology data files}
 \usage{
-get_met_reanalysis(files = NULL, years = NULL, path_met_files)
+get_met_reanalysis(
+  files = NULL,
+  years = NULL,
+  path_met_files,
+  reanalysis_dir = "ftp://arlftp.arlhq.noaa.gov/archives/reanalysis/"
+)
 }
 \arguments{
 \item{files}{a vector list of exact filenames for
@@ -17,6 +22,9 @@ reanalysis files are to be obtained via FTP.}
 \item{path_met_files}{a full path should be provided
 for the location of the meteorological data files;
 downloaded files will be saved in this location.}
+
+\item{reanalysis_dir}{a url to the top-level folder containing the
+meteorology data files}
 }
 \description{
 This function downloads reanalysis
